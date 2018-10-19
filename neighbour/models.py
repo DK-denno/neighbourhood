@@ -6,4 +6,3 @@ class Neighbourhoods(models.Model):
     name = models.CharField(max_length=10)
     location =  models.CharField(max_length=10)
     details =  models.CharField(max_length=40)
-    

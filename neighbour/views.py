@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from django.contrib.auth import login,authenticate
 from .forms import SignUpForm
+from .models import Profile
 # Create your views here.
 
 def signup(request):
@@ -13,6 +14,8 @@ def signup(request):
             email = form.cleaned_data['email']
             raw_password = form.cleaned_data['password1']
             user = authenticate(username=username,email=email,password=raw_password)
+            profile = Profile(user=user)
+            profile.save()
             login(request,user)
     return render(request,'signup.html',{"form":form})
 

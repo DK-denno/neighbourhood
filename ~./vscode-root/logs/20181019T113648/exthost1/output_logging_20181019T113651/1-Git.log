@@ -118,3 +118,15 @@ Use '--' to separate paths from revisions, like this:
 > git show :neighbour/templates/registration/login.html
 > git show :neighbour/templates/registration/login.html
 > git show :neighbour/models.py
+> git show :neighbour/models.py
+> git show :neighbour/models.py
+> git show :neighbour/views.py
+> git show :neighbour/tests.py
+> git show :neighbour/models.py
+> git show :neighbour/views.py
+> git show :neighbour/models.py
+> git show :neighbour/urls.py
+> git show :neighbour/models.py
+> git show :requirements.txt
+> git show :neighbour/models.py
+> git show :neighbour/views.py

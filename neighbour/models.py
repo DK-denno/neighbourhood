@@ -2,16 +2,16 @@ from django.db import models
 from django.contrib.auth.models import User
 # Create your models here.
 
-class Hotlines(models.Model):
-    name = models.CharField(max_length=20)
-    Hotline = models.BigIntegerField()
-
 
 class Neighbourhoods(models.Model):
     name = models.CharField(max_length=10)
     location =  models.CharField(max_length=10)
-    hotlines = models.ForeignKey(Hotlines,related_name='neigbourhoods')
-    
+    hotlines = models.CharField(max_length=20)
+    health = models.CharField(max_length=10)
+
+    def __str__(self):
+        return self.name
+
 
 
 class Profile(models.Model):
@@ -34,3 +34,5 @@ class Businesses(models.Model):
     details = models.CharField(max_length=100)
     neighbourhood = models.ForeignKey(Neighbourhoods,related_name='businesses')
     
+    def __str__(self):
+        return self.name

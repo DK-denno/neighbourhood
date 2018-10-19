@@ -130,3 +130,8 @@ Use '--' to separate paths from revisions, like this:
 > git show :requirements.txt
 > git show :neighbour/models.py
 > git show :neighbour/views.py
+> git show :neighbour/views.py
+> git show :neighbour/views.py
+> git show :neighbour/admin.py
+> git show :neighbour/models.py
+> git show :neighbour/admin.py

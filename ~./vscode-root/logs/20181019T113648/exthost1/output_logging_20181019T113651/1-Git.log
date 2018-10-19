@@ -114,3 +114,7 @@ Use '--' to separate paths from revisions, like this:
 > git show :neighbour/templates/registration/login.html
 > git ls-files --stage -- neighbour/templates/registration/
 > git check-ignore -z --stdin
+> git show :neighbour/templates/registration/login.html
+> git show :neighbour/templates/registration/login.html
+> git show :neighbour/templates/registration/login.html
+> git show :neighbour/models.py

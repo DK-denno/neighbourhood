@@ -4,24 +4,24 @@
 <img src="" alt="">
 <div class="row">
         <div class="col-md-4">
-            {% if request.user.profile.dp %}
+            {% if profile.dp %}
             <div class="row">
             
 
             <div class="cont">
-              <img id="" class="image" src="{{user.profile.dp.url}}" style="border-radius: 100%; width: 200px; height: 200px;" class="img-thumbnail " alt="">            </div>
+              <img id="" class="image" src="{{profile.dp.url}}" style="border-radius: 100%; width: 200px; height: 200px;" class="img-thumbnail " alt="">            </div>
        
             {% else %}
             <div class="cont">
-              <img id="" class="image" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSUShFoN8vCID0Rq3IjjbXGuSL3Pfun8wbkVYqrlOxECRptD4gK" style="border-radius: 100%; width: 200px; height: 200px;" class="img-thumbnail " alt="">
+              <img id="" class="image" src="http://www.digitalvertigo.co.uk/forum/uploads//monthly_05_2016/post-3489-0-19929300-1462982286.jpg" style="border-radius: 100%; width: 200px; height: 200px;" class="img-thumbnail " alt="">
     
             </div>
        
-            <h3><em>{{ user.username}}</em></h3>
+            <h3><em>{{ profile.user.username}}</em></h3>
             {% endif %}
-            <h3><em>{{ user.username}}</em></h3>
+            <h3><em>{{ profile.user.username}}</em></h3>
           </div>
-            <h3><em>{{user.profile.bio}}</em></h3>
+            <h3><em>{{profile.profile.bio}}</em></h3>
         </div>
        
           

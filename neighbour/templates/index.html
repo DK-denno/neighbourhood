@@ -1,7 +1,11 @@
 
 {% extends 'base.html' %}
 {% load bootstrap4 %}
+
 {% block content %}
+
+
+{% if request.user.profile.neighbourhood %}
 
 <div class='charts'>
 <div class="header">{{request.user.profile.neighbourhood}}</div>
@@ -24,39 +28,43 @@
 <h3>CHATS</h3>
        
               {% for message in messages %}
-                    <div class="Area">
-                      <div class="L">
-                        <a href="/profiles/{{message.user.id}}">
-                      <div class="tooltip">{{message.user.username}},{{message.user.profile.bio}}</div></a>
-                      </div>
-                      {% if message.user.id == request.user.id %}
-                      <div id="me" class="tex R textR">{{message.message}}
-                          </div>
-                              {% if message.user.profile.dp %}
-                              <a href="/profiles/{{message.user.id}}">
-                              <img class='image' width="50" height='50' src="{{message.user.profile.dp.url}}"/>
-                              {% else %}
-                              <img id="mes" class='image' width="50" height='50' src="http://www.digitalvertigo.co.uk/forum/uploads//monthly_05_2016/post-3489-0-19929300-1462982286.jpg" alt="">
-                              {% endif %} 
-                              </a>
-                          {% else %}
-                          {% if message.user.profile.dp %}
-                          <img class='image' width="50" height='50' src="{{message.user.profile.dp.url}}"/>
-                          {% else %}
-                          <img id="mes" class='image' width="50" height='50' src="http://www.digitalvertigo.co.uk/forum/uploads//monthly_05_2016/post-3489-0-19929300-1462982286.jpg" alt="">
-                          {% endif %} 
-                          <div id="you" class="tex">{{message.message}}
-                              {% endif %}
-                  
-                      </div>
-                   
-                    
-                     
-                        
-                        
+
+
+                {% if message.user.id == request.user.id %}
+                
+              <div class="Area"> 
+                    <div class="R">
+                      <a href="/profiles/{{message.user.profile.id}}">
+                        {% if message.user.profile.dp %}
+                    <img width='50' height='50' src="{{message.user.profile.dp.url}}"/>
+                    {% else %}
+                    <img width='50' height='50' src="http://www.digitalvertigo.co.uk/forum/uploads//monthly_05_2016/post-3489-0-19929300-1462982286.jpg" alt="">
+                    {% endif %}
+                        <div class="tooltip">Mariam Massadeh - 23 Years<br/>Computer Engineer<br/>Jordan</div></a>
+                    </div>    
+                    <div class="text L textL">{{message.message}}
+                    </div>    
+                  </div>
+                  {% else %}
+                <div class="Area">
+                  <div class="L">
+                    <a href="/profiles/{{message.user.profile.id}}">
+                        {% if message.user.profile.dp%}
+                        <img width='50' height='50' src="{{message.user.profile.dp.url}}"/>
+                        {% else %}
+                        <img width='50' height='50' src="http://www.digitalvertigo.co.uk/forum/uploads//monthly_05_2016/post-3489-0-19929300-1462982286.jpg" alt="">
+                        {% endif %}
+                      <div class="tooltip">Sami Massadeh - 28 Years<br/>Doctor <br/>Jordan</div></a>
+                  </div>
+                  <div class="text R textR">{{message.message}}
+                  </div>
+                </div>
+
+                {% endif %}                        
                     {% endfor %}
            
-        
+          
+              
             
       
       <div class="Area">
@@ -110,5 +118,9 @@
     
         </div>
     </div>
-          
+    {% else %}
+    <div class="alert alert-success" role="alert">
+            PLEASE CLICK ON THE PROFILES OPTION AND CHOOSE A NEIGHBOURHOOD
+          </div>
+          {% endif %}
 {% endblock %}

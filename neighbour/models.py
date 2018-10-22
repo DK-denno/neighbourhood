@@ -4,7 +4,7 @@ from django.contrib.auth.models import User
 
 
 class Neighbourhoods(models.Model):
-    user = models.ForeignKey(User,related_name='users')
+    user = models.ForeignKey(User,related_name='neighbourhood')
     name = models.CharField(max_length=10)
     location =  models.CharField(max_length=10)
    
@@ -16,7 +16,7 @@ class Neighbourhoods(models.Model):
 
 class Profile(models.Model):
     user = models.OneToOneField(User,on_delete=models.CASCADE,related_name='profile')
-    neighbourhood = models.ForeignKey(Neighbourhoods,related_name='users')
+    neighbourhood = models.ForeignKey(Neighbourhoods,related_name='users',null=True)
     dp =  models.ImageField(upload_to='images')
     bio = models.CharField(max_length=500)
     phone_number = models.BigIntegerField(null=True)

@@ -17,6 +17,7 @@ def signup(request):
             profile = Profile(user=user)
             profile.save()
             login(request,user)
+            return redirect('index')
     return render(request,'signup.html',{"form":form})
 
 def index(request):
@@ -40,9 +41,10 @@ def index(request):
             messaging.save()
             return redirect('/')
     messages = Message.objects.filter(neighbourhood=request.user.profile.neighbourhood)
-    
-    return render(request,'index.html',{ 'businesses':businesses, "form":form,'message_form':message_form,"messages":messages})
-
+    if request.user.neighbourhood == None:
+        message = 'PLEASE CLICK ON THE PROFILES OPTION AND CHOOSE A NEIGHBOURHOOD'
+        return render(request,'index.html',{ 'businesses':businesses,"habari":message, "form":form,'message_form':message_form,"messages":messages})
+    return render(request,'index.html',{ 'businesses':businesses,"form":form,'message_form':message_form,"messages":messages})
 def profile(request):
         form = ProfileForm()
         current_user=request.user

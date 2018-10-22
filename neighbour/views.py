@@ -1,7 +1,8 @@
 from django.shortcuts import render,redirect
 from django.contrib.auth import login,authenticate
-from .forms import SignUpForm,NeighbourhoodsForm,ProfileForm,ChangeNeighbourhood,MessageForm
+from .forms import SignUpForm,NeighbourhoodsForm,ProfileForm,ChangeNeighbourhood,MessageForm,BusinessForm
 from .models import Profile,Neighbourhoods,Message,Businesses
+from django.contrib.auth.models import User
 # Create your views here.
 
 def signup(request):
@@ -82,3 +83,17 @@ def search_results(request):
     else:
         message = "You haven't searched for any user"
         return render(request, 'search.html',{"message":message})
+
+def create_business(request):
+    bizform = BusinessForm()
+    if request.method == 'POST':
+        bizform = BusinessForm(request.POST,request.FILES)
+        if bizform.is_valid():
+            bizna = bizform.save(commit=False)
+            bizna.user = request.user
+            bizna.neighbourhood = request.user.profile.neighbourhood
+            bizna.save()
+            return redirect('/')
+    else:
+        bizform = BusinessForm()
+        return render(request,"biz.html",{"bizform":bizform})

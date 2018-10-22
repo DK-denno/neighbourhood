@@ -35,7 +35,7 @@ class Businesses(models.Model):
     user = models.ForeignKey(User,related_name='businesses')
     name = models.CharField(max_length=10)
     dp = models.ImageField(upload_to='biashara')
-    details = models.CharField(max_length=100)
+    details = models.CharField(max_length=1000)
     neighbourhood = models.ForeignKey(Neighbourhoods,related_name='businesses')
   
     def __str__(self):

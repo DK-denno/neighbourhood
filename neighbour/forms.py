@@ -1,8 +1,13 @@
 from django import forms
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
-from .models import Neighbourhoods,Profile,Message
-
+from .models import Neighbourhoods,Profile,Message,Businesses
+class BusinessForm(forms.ModelForm):
+    details = forms.CharField( widget=forms.Textarea )
+    class Meta:
+        model = Businesses
+        exclude = []
+        fields = ['name','dp','details']
 class SignUpForm(UserCreationForm):
     first_name = forms.CharField(max_length=40)
     last_name = forms.CharField(max_length=40)

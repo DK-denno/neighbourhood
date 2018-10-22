@@ -1,41 +1,32 @@
-<!--
-==========================================================
-                      by Évelym S.
-       https://www.linkedin.com/in/evelym-santos/
-==========================================================
--->
-<nav id="navbar" class="">
-    <div class="nav-wrapper">
-      <!-- Navbar Logo -->
-      <div class="logo">
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <!-- Logo Placeholder for Inlustration -->
-        <a href="/"><i class="fas fa-chess-knight"></i> Logo</a>
-      </div>
+        <a href="/" style="color:white;" class='nav-link' ><a style="color:white;" class="fas fa-chess-knight"></a> Logo</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
   
-      <!-- Navbar Links -->
-      <ul id="menu">
-        <li><a href="/">Home</a></li><!--
-     --><li><a data-toggle="modal" data-target="#account" href="">Neighbourhood</a></li><!--
-     --><li><a href="/profile/">Profile</a></li><!--
-     --><li><a href="#contact">next </a></li>
+    <div class="collapse navbar-collapse" id="navbarColor02">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+          <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link"  href="/biz">Create Business</a>
+        </li>
+        <!-- <li class="nav-item">
+          <a class="nav-link" href="#">Pricing</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">About</a>
+        </li> -->
       </ul>
+      <form action="{%url 'search_results'%}" class="form-inline my-2 my-lg-0">
+        <input class="form-control mr-sm-2" type="text" name='user' placeholder="Search">
+        <button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
+      </form>
     </div>
   </nav>
+<br><br>
+
+
   
-  
-  <!-- Menu Icon -->
-  <div class="menuIcon">
-    <span class="icon icon-bars"></span>
-    <span class="icon icon-bars overlay"></span>
-  </div>
-  
-  
-  <div class="overlay-menu">
-    <ul id="menu">
-        <li><a href="/">Home</a></li>
-        <li><a href="#services">Services</a></li>
-        <li><a href="#about">About</a></li>
-        <li><a href="#contact">Contact</a></li>
-      </ul>
-  </div>
-  <br><br><br>

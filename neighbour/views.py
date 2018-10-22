@@ -1,7 +1,7 @@
 from django.shortcuts import render,redirect
 from django.contrib.auth import login,authenticate
 from .forms import SignUpForm,NeighbourhoodsForm,ProfileForm,ChangeNeighbourhood,MessageForm
-from .models import Profile,Neighbourhoods,Message
+from .models import Profile,Neighbourhoods,Message,Businesses
 # Create your views here.
 
 def signup(request):
@@ -20,6 +20,8 @@ def signup(request):
     return render(request,'signup.html',{"form":form})
 
 def index(request):
+    businesses = Businesses.objects.filter(neighbourhood=request.user.profile.neighbourhood)
+    print(businesses)
     form = NeighbourhoodsForm()
     message_form = MessageForm()
     if request.method == 'POST':
@@ -39,7 +41,7 @@ def index(request):
             return redirect('/')
     messages = Message.objects.filter(neighbourhood=request.user.profile.neighbourhood)
     
-    return render(request,'index.html',{"form":form,'message_form':message_form,"messages":messages})
+    return render(request,'index.html',{ 'businesses':businesses, "form":form,'message_form':message_form,"messages":messages})
 
 def profile(request):
         form = ProfileForm()
@@ -53,15 +55,14 @@ def profile(request):
                     form.save()
                     return redirect('profile')
                 if neighbourhood.is_valid():
-                    majirani = neighbourhood.save(commit=False)
-                    new_neighbourhood = neighbourhood.cleaned_data['neighbourhood']
-                    real_neighbourhood = Neighbourhoods.objects.get(name=new_neighbourhood)
-                    majirani.neighbourhood = real_neighbourhood.id
-                    majirani.save
+                    neighbourhood.save()
                     return redirect('profile')
                 else:
                     message = 'Fill in the form appropriately'
                     return render(request,'profile/profile.html',{"neighbourhood":neighbourhood, "profile":profile,"form":form,"message":message})
-        return render(request,'profile/profile.html',{"form":form,"profile":profile})
+        return render(request,'profile/profile.html',{"form":form,"neighbourhood":neighbourhood, "profile":profile})
 
- 
+def profiles(request,id):
+    prof = Profile.objects.get(id=id)
+    business = Businesses.objects.filter(user=prof.user)
+    return render(request,'profile/profiles.html',{"profile":prof})

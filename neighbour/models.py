@@ -31,6 +31,7 @@ class Profile(models.Model):
         return self.user.username
 
 class Businesses(models.Model):
+    user = models.ForeignKey(User,related_name='businesses')
     name = models.CharField(max_length=10)
     dp = models.ImageField(upload_to='biashara')
     details = models.CharField(max_length=100)

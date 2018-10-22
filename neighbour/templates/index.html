@@ -5,63 +5,78 @@
 
 <div class='charts'>
 <div class="header">{{request.user.profile.neighbourhood}}</div>
+<div class="row">
+    <div class="col-md-6">
+        <div class="row">
+                <h2>Businesses</h2>
+        </div>
+        <div class="row">
+                {% for biashara in businesses %}
+                <div class="col-md-6">
+                <img src="{{biashara.dp.url}}" widh='100' height="100" alt="">        
+                </div>
+                {% endfor %}
+        </div>
+       
+    </div>
+    <div class="col-md-6"> 
 
-<div class="cont">
-    <div class="row">
-        
-          {% for message in messages %}
-                <div class="Area">
-                  <div class="L">
-                    <a href="/profiles/{{message.user.id}}">
-                  <div class="tooltip">{{message.user.username}},{{message.user.profile.bio}}</div></a>
-                  </div>
-                  {% if message.user.id == request.user.id %}
-                  <div id="me" class="tex R textR">{{message.message}}
+<h3>CHATS</h3>
+       
+              {% for message in messages %}
+                    <div class="Area">
+                      <div class="L">
+                        <a href="/profiles/{{message.user.id}}">
+                      <div class="tooltip">{{message.user.username}},{{message.user.profile.bio}}</div></a>
                       </div>
+                      {% if message.user.id == request.user.id %}
+                      <div id="me" class="tex R textR">{{message.message}}
+                          </div>
+                              {% if message.user.profile.dp %}
+                              <a href="/profiles/{{message.user.id}}">
+                              <img class='image' width="50" height='50' src="{{message.user.profile.dp.url}}"/>
+                              {% else %}
+                              <img id="mes" class='image' width="50" height='50' src="http://www.digitalvertigo.co.uk/forum/uploads//monthly_05_2016/post-3489-0-19929300-1462982286.jpg" alt="">
+                              {% endif %} 
+                              </a>
+                          {% else %}
                           {% if message.user.profile.dp %}
-                          <a href="/profiles/{{message.user.id}}">
                           <img class='image' width="50" height='50' src="{{message.user.profile.dp.url}}"/>
                           {% else %}
                           <img id="mes" class='image' width="50" height='50' src="http://www.digitalvertigo.co.uk/forum/uploads//monthly_05_2016/post-3489-0-19929300-1462982286.jpg" alt="">
                           {% endif %} 
-                          </a>
-                      {% else %}
-                      {% if message.user.profile.dp %}
-                      <img class='image' width="50" height='50' src="{{message.user.profile.dp.url}}"/>
-                      {% else %}
-                      <img id="mes" class='image' width="50" height='50' src="http://www.digitalvertigo.co.uk/forum/uploads//monthly_05_2016/post-3489-0-19929300-1462982286.jpg" alt="">
-                      {% endif %} 
-                      <div id="you" class="tex">{{message.message}}
-                          {% endif %}
-              
-                  </div>
-                </div>
-                
-                 
+                          <div id="you" class="tex">{{message.message}}
+                              {% endif %}
+                  
+                      </div>
+                   
                     
-                </div>
-                
-                {% endfor %}
-       
-    </div>
+                     
+                        
+                        
+                    {% endfor %}
+           
         
-  
-  <div class="Area">
-        <form action="{% url 'index' %}" method="post" enctype="multipart/form-data">
-            {%csrf_token%}
-        
-            {% bootstrap_form message_form %}
-            <br/><br/>
-        <button type='submit' class='btn btn-outline-success' onclick="clickX()" >Send</button>
- 
-  <br/>
-
             
-        </form>
+      
+      <div class="Area">
+            <form action="{% url 'index' %}" method="post" enctype="multipart/form-data">
+                {%csrf_token%}
+            
+                {% bootstrap_form message_form %}
+                <br/><br/>
+            <button type='submit' class='btn btn-outline-success' onclick="clickX()" >Send</button>
+     
+      <br/>
+    
+                
+            </form>
+    </div>
+    
+    </div>
+    
+    </div>
 </div>
-
-</div>
-
 <img src="" alt="">
 
 

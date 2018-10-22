@@ -17,7 +17,8 @@
         <div class="row">
                 {% for biashara in businesses %}
                 <div class="col-md-6">
-                <img src="{{biashara.dp.url}}" widh='100' height="100" alt="">        
+                <img src="{{biashara.dp.url}}" widh='100' height="100" alt="">    <br>
+                {{biashara.name}}    
                 </div>
                 {% endfor %}
         </div>
@@ -57,7 +58,8 @@
                         {% endif %}
                       <div class="tooltip">Sami Massadeh - 28 Years<br/>Doctor <br/>Jordan</div></a>
                   </div>
-                  <div class="text R textR">{{message.message}}
+                  <div class="text R textR">{{message.message}}<br>
+                    <img src="http://www.free-icons-download.net/images/comment-button-icon-53164.png" width='20' height="20" class='image' alt="">
                   </div>
                 </div>
 

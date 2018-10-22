@@ -8,26 +8,8 @@
 
 <div class="cont">
     <div class="row">
-        <div class="col-md-4">
-                <div class="Area">
-                        <form action="{% url 'index' %}" method="post" enctype="multipart/form-data">
-                            {%csrf_token%}
-                        
-                            {% bootstrap_form message_form %}
-                           
-                        <button type='submit' class='btn btn-outline-success' onclick="clickX()" >Send</button>
-                 
-                  <br/>
-                
-                            
-                        </form>
-                </div>
-        </div>
-        <div class="col-md-4">
-            <h1>hello</h1>
-        </div>
-        <div class="col-md-4">
-                {% for message in messages %}
+        
+          {% for message in messages %}
                 <div class="Area">
                   <div class="L">
                     <a href="/profiles/{{message.user.id}}">
@@ -60,11 +42,23 @@
                 </div>
                 
                 {% endfor %}
-        </div>
+       
     </div>
         
   
+  <div class="Area">
+        <form action="{% url 'index' %}" method="post" enctype="multipart/form-data">
+            {%csrf_token%}
+        
+            {% bootstrap_form message_form %}
+            <br/><br/>
+        <button type='submit' class='btn btn-outline-success' onclick="clickX()" >Send</button>
+ 
+  <br/>
 
+            
+        </form>
+</div>
 
 </div>
 

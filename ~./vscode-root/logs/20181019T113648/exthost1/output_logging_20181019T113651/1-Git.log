@@ -246,3 +246,158 @@ Use '--' to separate paths from revisions, like this:
 > git show :neighbour/forms.py
 > git show :neighbour/forms.py
 > git show :neighbour/forms.py
+> git show :neighbour/forms.py
+> git show :neighbour/forms.py
+> git show :neighbour/views.py
+> git show :neighbour/forms.py
+> git show :neighbour/views.py
+> git show :neighbour/models.py
+> git show :neighbour/views.py
+> git show :neighbour/models.py
+> git show :neighbour/views.py
+> git show :neighbour/models.py
+> git show :neighbour/views.py
+> git show :neighbour/models.py
+> git show :neighbour/views.py
+> git show :neighbour/models.py
+> git show :neighbour/templates/index.html
+> git show :neighbour/views.py
+> git show :neighbour/models.py
+> git show :neighbour/views.py
+> git show :neighbour/models.py
+> git show :neighbour/views.py
+> git show :neighbour/templates/index.html
+> git show :neighbour/views.py
+> git show :neighbour/templates/navbar.html
+> git show :neighbour/templates/signup.html
+> git show :neighbour/templates/index.html
+> git show :neighbour/models.py
+> git show :neighbour/forms.py
+> git show :neighbour/models.py
+> git show :neighbour/forms.py
+> git show :neighbour/views.py
+> git show :neighbour/models.py
+> git show :neighbour/admin.py
+> git show :neighbour/models.py
+> git show :neighbour/templates/navbar.html
+> git check-ignore -z --stdin
+> git check-ignore -z --stdin
+> git check-ignore -z --stdin
+> git check-ignore -z --stdin
+> git check-ignore -z --stdin
+> git show :static/css/styles.css
+> git ls-files --stage -- static/css/
+> git show :neighbour/templates/base.html
+> git show :static/css/styles.css
+> git ls-files --stage -- static/css/
+> git show :neighbour/templates/index.html
+> git show :neighbour/templates/base.html
+> git show :neighbour/templates/index.html
+> git check-ignore -z --stdin
+> git check-ignore -z --stdin
+> git show :static/css/styles.css
+> git ls-files --stage -- static/css/
+> git show :neighbour/templates/styles.css
+> git ls-files --stage -- neighbour/templates/
+> git check-ignore -z --stdin
+> git show :neighbour/templates/base.html
+> git show :static/css/styles.css
+> git ls-files --stage -- static/css/
+> git show :neighbour/templates/base.html
+> git show :neighbours/settings.py
+> git show :neighbour/templates/index.html
+> git show :neighbour/templates/navbar.html
+> git show :neighbour/templates/index.html
+> git show :neighbour/templates/navbar.html
+> git show :neighbour/models.py
+> git show :neighbour/templates/navbar.html
+> git show :neighbour/templates/index.html
+> git show :neighbour/templates/navbar.html
+> git show :neighbour/templates/index.html
+> git show :neighbour/templates/navbar.html
+> git check-ignore -z --stdin
+> git show :static/css/styles.css
+> git ls-files --stage -- static/css/
+> git show :neighbour/templates/navbar.html
+> git show :static/css/styles.css
+> git ls-files --stage -- static/css/
+> git show :neighbour/templates/navbar.html
+> git check-ignore -z --stdin
+> git show :neighbour/templates/profile.html
+> git ls-files --stage -- neighbour/templates/
+> git show :neighbour/forms.py
+> git check-ignore -z --stdin
+> git check-ignore -z --stdin
+> git show :neighbour/views.py
+> git show :neighbour/forms.py
+> git show :neighbour/templates/profile/profile.html
+> git ls-files --stage -- neighbour/templates/profile/
+> git show :neighbour/urls.py
+> git show :neighbour/forms.py
+> git show :neighbour/views.py
+> git check-ignore -z --stdin
+> git show :neighbour/templates/profile/profile.html
+> git ls-files --stage -- neighbour/templates/profile/
+> git show :neighbour/templates/index.html
+> git show :neighbour/templates/profile/profile.html
+> git ls-files --stage -- neighbour/templates/profile/
+> git show :neighbour/views.py
+> git show :neighbour/templates/profile/profile.html
+> git ls-files --stage -- neighbour/templates/profile/
+> git show :neighbours/settings.py
+> git show :neighbour/urls.py
+> git show :neighbours/settings.py
+> git check-ignore -z --stdin
+> git show :neighbour/templates/profile/profile.html
+> git ls-files --stage -- neighbour/templates/profile/
+> git show :neighbour/templates/navbar.html
+> git show :neighbour/templates/registration/login.html
+> git show :neighbour/templates/navbar.html
+> git show :neighbour/templates/index.html
+> git show :neighbour/templates/navbar.html
+> git show :neighbour/models.py
+> git show :neighbour/views.py
+> git show :neighbour/admin.py
+> git show :neighbour/tests.py
+> git show :neighbour/views.py
+> git show :neighbour/apps.py
+> git show :neighbour/urls.py
+> git show :neighbour/views.py
+> git show :neighbour/forms.py
+> git show :neighbour/templates/profile/profile.html
+> git ls-files --stage -- neighbour/templates/profile/
+> git show :neighbour/tests.py
+> git show :neighbour/models.py
+> git show :neighbour/templates/index.html
+> git show :neighbour/models.py
+> git show :neighbour/views.py
+> git show :neighbour/models.py
+> git show :neighbour/views.py
+> git show :neighbour/models.py
+> git show :neighbour/views.py
+> git show :neighbour/forms.py
+> git show :neighbour/models.py
+> git show :neighbour/forms.py
+> git show :neighbour/models.py
+> git show :neighbour/forms.py
+> git show :neighbour/templates/index.html
+> git show :static/css/styles.css
+> git ls-files --stage -- static/css/
+> git show :neighbour/templates/index.html
+> git show :static/css/styles.css
+> git ls-files --stage -- static/css/
+> git show :neighbour/templates/index.html
+> git show :static/css/styles.css
+> git ls-files --stage -- static/css/
+> git show :neighbour/templates/index.html
+> git show :static/css/styles.css
+> git ls-files --stage -- static/css/
+> git show :neighbour/templates/index.html
+> git show :static/css/styles.css
+> git ls-files --stage -- static/css/
+> git show :neighbour/templates/index.html
+> git show :static/css/styles.css
+> git ls-files --stage -- static/css/
+> git show :neighbour/templates/index.html
+> git show :static/css/styles.css
+> git ls-files --stage -- static/css/

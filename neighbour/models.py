@@ -4,11 +4,11 @@ from django.contrib.auth.models import User
 
 
 class Neighbourhoods(models.Model):
+    user = models.ForeignKey(User,related_name='users')
     name = models.CharField(max_length=10)
     location =  models.CharField(max_length=10)
-    hotlines = models.CharField(max_length=20)
-    health = models.CharField(max_length=10)
-
+   
+   
     def __str__(self):
         return self.name
 
@@ -33,6 +33,11 @@ class Businesses(models.Model):
     name = models.CharField(max_length=10)
     details = models.CharField(max_length=100)
     neighbourhood = models.ForeignKey(Neighbourhoods,related_name='businesses')
-    
+  
     def __str__(self):
         return self.name
+
+class Message(models.Model):
+    message = models.CharField(max_length=30)
+    user = models.ForeignKey(User,related_name='message')
+    neighbourhood = models.ForeignKey(Neighbourhoods,related_name='mess')

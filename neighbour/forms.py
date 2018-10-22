@@ -24,8 +24,15 @@ class ProfileForm(forms.ModelForm):
         exclude = ['user']
         fields = ['dp','bio']
 
-class message(forms.ModelForm):
+class MessageForm(forms.ModelForm):
+    message = forms.CharField( widget=forms.Textarea )
     class Meta:
         model = Message
         exclude = []
         fields = ['message']
+
+class ChangeNeighbourhood(forms.ModelForm):
+    class Meta:
+        model = Profile
+        exclude = ['dp','bio','phone_number']
+        fields = ['neighbourhood']

@@ -16,6 +16,7 @@ class Neighbourhoods(models.Model):
 
 class Profile(models.Model):
     user = models.OneToOneField(User,on_delete=models.CASCADE,related_name='profile')
+    neighbourhood = models.ForeignKey(Neighbourhoods,related_name='users')
     dp =  models.ImageField(upload_to='images')
     bio = models.CharField(max_length=500)
     phone_number = models.BigIntegerField(null=True)
@@ -38,6 +39,6 @@ class Businesses(models.Model):
         return self.name
 
 class Message(models.Model):
-    message = models.CharField(max_length=30)
+    message = models.CharField(max_length=1000)
     user = models.ForeignKey(User,related_name='message')
     neighbourhood = models.ForeignKey(Neighbourhoods,related_name='mess')

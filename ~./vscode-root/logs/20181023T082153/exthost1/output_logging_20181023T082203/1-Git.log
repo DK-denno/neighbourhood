@@ -2809,3 +2809,4 @@ fatal: no upstream configured for branch 'master'
 > git show :neighbour/tests.py
 > git show :neighbour/tests.py
 > git show :neighbour/tests.py
+> git status -z -u

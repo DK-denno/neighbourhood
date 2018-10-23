@@ -2892,3 +2892,5 @@ fatal: no upstream configured for branch 'master'
 > git remote --verbose
 > git show :neighbour/tests.py
 > git show :neighbour/tests.py
+> git show :neighbour/tests.py
+> git status -z -u

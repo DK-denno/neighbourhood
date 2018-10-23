@@ -19,7 +19,6 @@ class Neighbourhoods(models.Model):
     user = models.ForeignKey(User,related_name='neighbourhood')
     name = models.CharField(max_length=10)
     admin = models.OneToOneField(User,related_name='admin',null=True)
-    location =  models.ForeignKey(Location,null=True)
     locale = models.CharField(max_length=20)
    
     

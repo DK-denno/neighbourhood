@@ -42,8 +42,23 @@
                     {% endif %}
                         <div class="tooltip">Mariam Massadeh - 23 Years<br/>Computer Engineer<br/>Jordan</div></a>
                     </div>    
-                    <div class="text L textL">{{message.message}}<br>
-                        <img src="http://www.free-icons-download.net/images/comment-button-icon-53164.png" width='20' height="20" class='image' alt="">
+                    <div  class="text L textL"><b><h3>{{message.message}}</h3></b><br>
+                        Comments
+                        {% for meso in message.comm.all %}
+                        <div style="margin-left: 30px;" class="row">
+                               {{meso.user.username}} : {{meso.comment}}   
+                        </div>
+                       
+                               
+                               {% endfor %}   
+                        <form action="/comment/{{message.id}}" method="POST" enctype="multipart/form-data">
+                            {%csrf_token%}
+                        
+                            {% bootstrap_form comment %}
+                        <button type='submit' class='btn btn-outline-success'>
+                            <img src="http://www.free-icons-download.net/images/comment-button-icon-53164.png" data-toggle="modal" data-target="#{{message.id}}" width='20' height="20" class='image' alt="">
+                        </button>
+                        </form>
                     </div>    
                   </div>
                   {% else %}
@@ -57,12 +72,28 @@
                         {% endif %}
                       <div class="tooltip">Sami Massadeh - 28 Years<br/>Doctor <br/>Jordan</div></a>
                   </div>
-                  <div class="text R textR">{{message.message}}<br>
-                    <img src="http://www.free-icons-download.net/images/comment-button-icon-53164.png" width='20' height="20" class='image' alt="">
+                  
+                  <div class="text R textR">{{message.message}}<br><br><br>
+                    Comments
+                        {% for meso in message.comm.all %}
+                        <div style="margin-left: 30px;" class="row">
+                               {{meso.user.username}} : {{meso.comment}}   
+                        </div>
+                        {% endfor %}    
+                    <form action="/comment/{{message.id}}" method="POST" enctype="multipart/form-data">
+                        {%csrf_token%}
+                        {% bootstrap_form comment %}
+                        <button type='submit' class='btn btn-outline-success'>
+                            <img src="http://www.free-icons-download.net/images/comment-button-icon-53164.png" data-toggle="modal" data-target="#{{message.id}}" width='20' height="20" class='image' alt="">
+                        </button>
+                    </form>
                   </div>
-                </div>
+                
+                
+                {% endif %}    
+                
 
-                {% endif %}                        
+                                    
                     {% endfor %}
            
           

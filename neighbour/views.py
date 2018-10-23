@@ -1,6 +1,6 @@
 from django.shortcuts import render,redirect
 from django.contrib.auth import login,authenticate
-from .forms import SignUpForm,NeighbourhoodsForm,ProfileForm,ChangeNeighbourhood,MessageForm,BusinessForm
+from .forms import SignUpForm,NeighbourhoodsForm,ProfileForm,ChangeNeighbourhood,MessageForm,BusinessForm,CommentForm
 from .models import Profile,Neighbourhoods,Message,Businesses
 from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
@@ -26,6 +26,7 @@ def signup(request):
 def index(request):
     businesses = Businesses.objects.filter(neighbourhood=request.user.profile.neighbourhood)
     print(businesses)
+    comment = CommentForm()
     new_neighbourhood = NeighbourhoodsForm()
     message_form = MessageForm()
     if request.method == 'POST':
@@ -46,8 +47,8 @@ def index(request):
     messages = Message.objects.filter(neighbourhood=request.user.profile.neighbourhood)
     if request.user.neighbourhood == None:
         message = 'PLEASE CLICK ON THE PROFILES OPTION AND CHOOSE A NEIGHBOURHOOD'
-        return render(request,'index.html',{"new_neighbourhood":new_neighbourhood,'businesses':businesses,"habari":message,'message_form':message_form,"messages":messages})
-    return render(request,'index.html',{"new_neighbourhood":new_neighbourhood,'businesses':businesses,'message_form':message_form,"messages":messages})
+        return render(request,'index.html',{"comment":comment,"new_neighbourhood":new_neighbourhood,'businesses':businesses,"habari":message,'message_form':message_form,"messages":messages})
+    return render(request,'index.html',{"comment":comment,"new_neighbourhood":new_neighbourhood,'businesses':businesses,'message_form':message_form,"messages":messages})
 
 @login_required(login_url='/auth/login/')
 def profile(request):
@@ -113,4 +114,15 @@ def create_neighbourhood(request):
             neighbourhood.user = request.user
             neighbourhood.admin = request.user
             neighbourhood.save()
+            return redirect('index')
+
+def comment(request,id):
+    commentt = Message.objects.get(id=id)
+    if request.method == 'POST':
+        comment = CommentForm(request.POST)
+        if comment.is_valid():
+            comm = comment.save(commit=False)
+            comm.user = request.user
+            comm.message = commentt 
+            comm.save()
             return redirect('index')

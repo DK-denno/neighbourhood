@@ -45,3 +45,8 @@ class Message(models.Model):
     message = models.CharField(max_length=1000)
     user = models.ForeignKey(User,related_name='message')
     neighbourhood = models.ForeignKey(Neighbourhoods,related_name='mess')
+
+class Comments(models.Model):
+    comment = models.CharField(max_length=1000)
+    user = models.ForeignKey(User,related_name='commentings',on_delete=models.CASCADE)
+    message = models.ForeignKey(Message,related_name='comm')

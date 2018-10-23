@@ -3,6 +3,7 @@ from django.contrib.auth import login,authenticate
 from .forms import SignUpForm,NeighbourhoodsForm,ProfileForm,ChangeNeighbourhood,MessageForm,BusinessForm
 from .models import Profile,Neighbourhoods,Message,Businesses
 from django.contrib.auth.models import User
+from django.contrib.auth.decorators import login_required
 # Create your views here.
 
 def signup(request):
@@ -21,10 +22,11 @@ def signup(request):
             return redirect('index')
     return render(request,'signup.html',{"form":form})
 
+@login_required(login_url='/auth/login/')
 def index(request):
     businesses = Businesses.objects.filter(neighbourhood=request.user.profile.neighbourhood)
     print(businesses)
-    form = NeighbourhoodsForm()
+    new_neighbourhood = NeighbourhoodsForm()
     message_form = MessageForm()
     if request.method == 'POST':
         form = NeighbourhoodsForm(request.POST)
@@ -44,8 +46,10 @@ def index(request):
     messages = Message.objects.filter(neighbourhood=request.user.profile.neighbourhood)
     if request.user.neighbourhood == None:
         message = 'PLEASE CLICK ON THE PROFILES OPTION AND CHOOSE A NEIGHBOURHOOD'
-        return render(request,'index.html',{ 'businesses':businesses,"habari":message, "form":form,'message_form':message_form,"messages":messages})
-    return render(request,'index.html',{ 'businesses':businesses,"form":form,'message_form':message_form,"messages":messages})
+        return render(request,'index.html',{"new_neighbourhood":new_neighbourhood,'businesses':businesses,"habari":message,'message_form':message_form,"messages":messages})
+    return render(request,'index.html',{"new_neighbourhood":new_neighbourhood,'businesses':businesses,'message_form':message_form,"messages":messages})
+
+@login_required(login_url='/auth/login/')
 def profile(request):
         form = ProfileForm()
         current_user=request.user
@@ -65,13 +69,14 @@ def profile(request):
                     return render(request,'profile/profile.html',{"neighbourhood":neighbourhood, "profile":profile,"form":form,"message":message})
         return render(request,'profile/profile.html',{"form":form,"neighbourhood":neighbourhood, "profile":profile})
 
+@login_required(login_url='/auth/login/')
 def profiles(request,id):
     prof = Profile.objects.get(id=id)
     business = Businesses.objects.filter(user=prof.user)
     return render(request,'profile/profiles.html',{"profile":prof})
 
 
-
+@login_required(login_url='/auth/login/')
 def search_results(request):
     
     if 'user' in request.GET or request.GET['user']:
@@ -84,6 +89,7 @@ def search_results(request):
         message = "You haven't searched for any user"
         return render(request, 'search.html',{"message":message})
 
+@login_required(login_url='/auth/login/')
 def create_business(request):
     bizform = BusinessForm()
     if request.method == 'POST':
@@ -97,3 +103,14 @@ def create_business(request):
     else:
         bizform = BusinessForm()
         return render(request,"biz.html",{"bizform":bizform})
+
+@login_required(login_url='/auth/login/')
+def create_neighbourhood(request):
+    if request.method == 'POST':
+        new_neighbourhood = NeighbourhoodsForm(request.POST)
+        if new_neighbourhood.is_valid():
+            neighbourhood = new_neighbourhood.save(commit=False)
+            neighbourhood.user = request.user
+            neighbourhood.admin = request.user
+            neighbourhood.save()
+            return redirect('index')

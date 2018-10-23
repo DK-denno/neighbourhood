@@ -1,7 +1,7 @@
 from django import forms
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
-from .models import Neighbourhoods,Profile,Message,Businesses
+from .models import Neighbourhoods,Profile,Message,Businesses,Comments
 class BusinessForm(forms.ModelForm):
     details = forms.CharField( widget=forms.Textarea )
     class Meta:
@@ -21,7 +21,15 @@ class NeighbourhoodsForm(forms.ModelForm):
     class Meta:
         model = Neighbourhoods
         exclude = []
-        fields = ['name','location']
+        fields = ['name','locale']
+
+class CommentForm(forms.ModelForm):
+    class Meta:
+        model = Comments
+        exclude = []
+        fields = ['comment']
+
+
 
 class ProfileForm(forms.ModelForm):
     class Meta:

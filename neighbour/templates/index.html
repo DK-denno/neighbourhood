@@ -4,7 +4,6 @@
 
 {% block content %}
 
-
 {% if request.user.profile.neighbourhood %}
 
 <div class='charts'>
@@ -91,42 +90,43 @@
 <img src="" alt="">
 
 
-<div class="modal fade" id="account" role="dialog">
-    <div class="modal-dialog">
     
-        <!-- Modal content-->
-        <div style="font-size: 20px; font-family: 'Mali', cursive;" class="modal-content">
-            <div class="modal-header">
-                <h2>NEW NEIGHBOURHOOD</h2>
-                
-                <button type="button" class="close" data-dismiss="modal">&times;</button>
-            
-            </div>
-                <div class='row' style="margin-left: 10px;" >
-                    <em><b>N/B:<h4>Fill in all the fields</h4></b></em>
-                </div>
-            <div class="modal-body">
-                    <form action="" method="post" enctype="multipart/form-data">
-                        {%csrf_token%}
-                    
-                        {% bootstrap_form form %}
-                        
-                        <button class='btn btn-primary' type='submit' >SUBMIT</button>
-                    </form>
-            
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                </div>
-            </div>
-    
-        </div>
-    </div>
     
 
-<!-- Modal -->
     {% else %}
     <div class="alert alert-success" role="alert">
             PLEASE CLICK ON THE PROFILES OPTION AND CHOOSE A NEIGHBOURHOOD
           </div>
+          
           {% endif %}
+<div class="modal" id="myModal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+
+      <!-- Modal Header -->
+      <div class="modal-header">
+        <h4 class="modal-title">Modal Heading</h4>
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+      </div>
+
+      <!-- Modal body -->
+      <div class="modal-body">
+        <form action="" method="post" enctype="multipart/form-data">
+            {%csrf_token%}
+        
+            {% bootstrap_form new_neighbourhood %}
+            
+            <button class='btn btn-primary' type='submit' >SUBMIT</button>
+        </form>
+
+      </div>
+
+      <!-- Modal footer -->
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+      </div>
+
+    </div>
+  </div>
+</div>
 {% endblock %}
